@@ -1,10 +1,10 @@
 import * as itowns from 'itowns';
 import * as THREE from 'three';
 //import simulsJson from '../../data/simuls_sample2.json'
-//import simulsJson from '../../data/simuls_sample.json'
+import simulsJson from '../../data/simuls_sample.json'
 //import simulsJson from '../../data/custom.geo3.json'
 //import simulsJson from '../../data/ariege.json'
-import simulsJson from '../../data/parcelles_sample'
+//import simulsJson from '../../data/parcelles_sample'
 
 const simulSource = new itowns.FileSource({
     //url: 'https://raw.githubusercontent.com/itownsResearch/basic_tutorial/master/data/parcelles_sample.json',
@@ -14,9 +14,9 @@ const simulSource = new itowns.FileSource({
     projection: 'EPSG:4326',
     format: 'application/json',
     //zoom: { min: 11, max: 11 }, //for parcelles, 7,7 for ariege
-    zoom: { min: 11, max: 11 },
+    zoom: { min: 7, max: 20 },
     mergeFeatures: false,
-    buildExtent: true
+    //buildExtent: true
 });
 
 const simulLayer = new itowns.GeometryLayer('simuls', new THREE.Group(), {
@@ -24,13 +24,11 @@ const simulLayer = new itowns.GeometryLayer('simuls', new THREE.Group(), {
     convert: itowns.Feature2Mesh.convert({
         //altitude: () => 1,
         extrude:  (p) => { console.log("pppp", p); return 30},
-        color: () => new THREE.Color(0xffb00b),
+        color: () => new THREE.Color(0x00ff55),
         batchId: (p, fId) => { console.log("fffId", fId) ; fId }
     }),
     //overrideAltitudeInToZero: true,
     source: simulSource
 });
-
-
 
 export {simulLayer}

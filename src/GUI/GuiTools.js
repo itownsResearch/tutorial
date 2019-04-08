@@ -8,7 +8,7 @@
 
 import dat from 'dat.gui';
 import * as itowns from 'itowns';
-import { log } from 'three';
+
 
 dat.GUI.prototype.removeFolder = function removeFolder(name) {
     var folder = this.__folders[name];

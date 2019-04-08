@@ -2,7 +2,7 @@ import * as itowns from 'itowns';
 import darkJson from './layers/dark'
 import batiLayer from './layers/bati'
 import buildParcellesLayer from './layers/parcelles_raster';
-import {simulLayer} from './layers/simulsGeom'
+import { simulLayer } from './layers/json_geom'
 import GuiTools from './GUI/GuiTools'
 import { addMeshToScene } from './utils/CreateMesh'
 
@@ -33,7 +33,7 @@ let loadLayers = async function() {
     console.log('--parcelles done');
     console.log('loading bati simulé');
     //let simula = await buildSimuLayer();
-    let simuls = await globeView.addLayer(await simulLayer).then(() => true).catch((r) => { console.error(r); return false });
+    let simuls = await globeView.addLayer(simulLayer).then(() => true).catch((r) => { console.error(r); return false });
     console.log('--bati simulé done');
     return dark && batitopo && parcelles && simuls;
 }();
