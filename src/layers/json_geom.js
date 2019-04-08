@@ -13,10 +13,8 @@ const simulSource = new itowns.FileSource({
     crsOut: 'EPSG:4326', //view.tileLayer.extent.crs,
     projection: 'EPSG:4326',
     format: 'application/json',
-    //zoom: { min: 11, max: 11 }, //for parcelles, 7,7 for ariege
-    zoom: { min: 7, max: 20 },
-    mergeFeatures: false,
-    //buildExtent: true
+    zoom: { min: 17, max: 17 },
+    
 });
 
 const simulLayer = new itowns.GeometryLayer('simuls', new THREE.Group(), {
@@ -28,6 +26,7 @@ const simulLayer = new itowns.GeometryLayer('simuls', new THREE.Group(), {
         batchId: (p, fId) => { console.log("fffId", fId) ; fId }
     }),
     //overrideAltitudeInToZero: true,
+    mergeFeatures: false,
     source: simulSource
 });
 
