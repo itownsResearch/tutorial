@@ -2,7 +2,7 @@ import * as itowns from 'itowns';
 import * as THREE from 'three';
 
 const wfsSource = new itowns.WFSSource({
-    url: 'http://wxs.ign.fr/3ht7xcw6f7nciopo16etuqp2/geoportail/wfs?',
+    url: 'http://wxs.ign.fr/oej022d760omtb9y4b19bubh/geoportail/wfs?',
     version: '2.0.0',
     typeName: 'BDTOPO_BDD_WLD_WGS84G:bati_remarquable,BDTOPO_BDD_WLD_WGS84G:bati_indifferencie,BDTOPO_BDD_WLD_WGS84G:bati_industriel',
     projection: 'EPSG:4326',
