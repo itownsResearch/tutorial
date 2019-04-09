@@ -3474,7 +3474,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var itow
 /*! exports provided: id, source, default */
 /***/ (function(module) {
 
-eval("module.exports = {\"id\":\"DARK\",\"source\":{\"networkOptions\":{\"crossOrigin\":\"anonymous\"},\"format\":\"image/png\",\"url\":\"http://a.basemaps.cartocdn.com/dark_all/${z}/${x}/${y}.png\",\"attribution\":{\"name\":\"CARTO\",\"url\":\"https://carto.com/\"},\"tileMatrixSet\":\"PM\"}};\n\n//# sourceURL=webpack:///./src/layers/dark.json?");
+eval("module.exports = {\"id\":\"DARK\",\"source\":{\"networkOptions\":{\"crossOrigin\":\"anonymous\"},\"format\":\"image/png\",\"url\":\"https://a.basemaps.cartocdn.com/dark_all/${z}/${x}/${y}.png\",\"attribution\":{\"name\":\"CARTO\",\"url\":\"https://carto.com/\"},\"tileMatrixSet\":\"PM\"}};\n\n//# sourceURL=webpack:///./src/layers/dark.json?");
 
 /***/ }),
 
