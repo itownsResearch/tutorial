@@ -5,6 +5,7 @@ import buildParcellesLayer from './layers/parcelles_raster';
 import { simulLayer } from './layers/json_geom'
 import GuiTools from './GUI/GuiTools'
 import { addMeshToScene } from './utils/CreateMesh'
+import {buildShapeRasterLayer, buildShapeGeomLayer} from './layers/shape_batis'
 
 let positionOnGlobe = { longitude: 2.46315, latitude: 48.819609, altitude: 5500 };
 let viewerDiv = document.getElementById('viewerDiv');
@@ -19,23 +20,31 @@ let darkLayer = new itowns.ColorLayer('DARK', {
     source: darkSource,
 });
 
-
 let loadLayers = async function() {
     console.log('loading dark');
     const dark = await globeView.addLayer(darkLayer).then(() => true).catch((r) => { console.error(r); return false });
     console.log('--dark done');
     console.log('loading bati');
-    const batitopo = await globeView.addLayer(batiLayer).then(() => true).catch((r) => { console.error(r); return false });
+    //const batitopo = await globeView.addLayer(batiLayer).then(() => true).catch((r) => { console.error(r); return false });
+    const batitopo = true;
     console.log('--bati done');
     console.log('loading parcelles');
     let parcelles_raster = await buildParcellesLayer();
     const parcelles = await globeView.addLayer(parcelles_raster).then(() => true).catch((r) => { console.error(r); return false });
     console.log('--parcelles done');
     console.log('loading bati simulé');
-    //let simula = await buildSimuLayer();
     let simuls = await globeView.addLayer(simulLayer).then(() => true).catch((r) => { console.error(r); return false });
     console.log('--bati simulé done');
-    return dark && batitopo && parcelles && simuls;
+    console.log('loading shapes for rasterization')
+    let velibLayer = await buildShapeRasterLayer();
+    let shapes = await globeView.addLayer(velibLayer).then(() => true).catch((r) => { console.error(r); return false });
+    //const shapes = true
+    console.log('--shapefile done');
+    // console.log('loading shapes as a geom layer')
+    // let shapeGeoms = await buildShapeGeomLayer();
+    // let shapesg = globeView.addLayer(shapeGeoms).then(() => true).catch((r) => { console.error(r); return false });
+    // console.log('--shapefile as geom done');
+    return dark && batitopo && parcelles && simuls && shapes;
 }();
 
 let time = 0;
