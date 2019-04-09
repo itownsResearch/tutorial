@@ -25,8 +25,8 @@ let loadLayers = async function() {
     const dark = await globeView.addLayer(darkLayer).then(() => true).catch((r) => { console.error(r); return false });
     console.log('--dark done');
     console.log('loading bati');
-    //const batitopo = await globeView.addLayer(batiLayer).then(() => true).catch((r) => { console.error(r); return false });
-    const batitopo = true;
+    const batitopo = await globeView.addLayer(batiLayer).then(() => true).catch((r) => { console.error(r); return false });
+    //const batitopo = true;
     console.log('--bati done');
     console.log('loading parcelles');
     let parcelles_raster = await buildParcellesLayer();
@@ -36,8 +36,8 @@ let loadLayers = async function() {
     let simuls = await globeView.addLayer(simulLayer).then(() => true).catch((r) => { console.error(r); return false });
     console.log('--bati simulé done');
     console.log('loading shapes for rasterization')
-    let velibLayer = await buildShapeRasterLayer();
-    let shapes = await globeView.addLayer(velibLayer).then(() => true).catch((r) => { console.error(r); return false });
+    let batisFromShp = await buildShapeRasterLayer();
+    let shapes = await globeView.addLayer(batisFromShp).then(() => true).catch((r) => { console.error(r); return false });
     //const shapes = true
     console.log('--shapefile done');
     // console.log('loading shapes as a geom layer')
